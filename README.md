@@ -1,5 +1,9 @@
-Cara Menjalankan Aplikasi
-Backend (Laravel)
+## Cara Menjalankan Aplikasi
+
+```bash
+# =====================
+# Backend (Laravel)
+# =====================
 cd Backend
 
 # Install dependencies
@@ -13,22 +17,29 @@ php artisan key:generate
 php artisan migrate
 php artisan db:seed --class=MahasiswaSeeder
 
-# Start server
+# Start backend server
 php artisan serve --port=8001
-Frontend (Vue.js)
-cd Frontend/vue-project
+
+
+# =====================
+# Frontend (Vue.js)
+# =====================
+cd ../Frontend/vue-project
 
 # Install dependencies
 npm install
 
-# Start development server
+# Start frontend development server
 npm run dev
-Testing
-cd Backend
+
+
+# =====================
+# Testing
+# =====================
+cd ../../Backend
 
 # Run all tests
 php artisan test
 
 # Run specific test
 php artisan test --filter=MahasiswaTest
-API Documentation
