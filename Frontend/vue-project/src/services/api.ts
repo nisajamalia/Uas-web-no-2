@@ -6,7 +6,7 @@ class ApiService {
 
   constructor() {
     this.api = axios.create({
-      baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api',
+      baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8001/api',
       timeout: 10000,
       headers: {
         'Content-Type': 'application/json',
@@ -191,3 +191,6 @@ class ApiService {
 }
 
 export const apiService = new ApiService()
+
+// Export the axios instance for direct use in stores
+export const apiClient = apiService['api']

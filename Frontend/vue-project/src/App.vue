@@ -3,6 +3,7 @@ import { onMounted, watch, onUnmounted } from 'vue'
 import { useAuthStore } from '@/stores/auth'
 import { useRoute, useRouter } from 'vue-router'
 import { useRouteGuard } from '@/composables/useRouteGuard'
+import NotificationContainer from '@/components/NotificationContainer.vue'
 
 const authStore = useAuthStore()
 const route = useRoute()
@@ -58,12 +59,14 @@ onUnmounted(() => {
         <div class="header-content">
           <div class="brand">
             <h1>SAKTI Mini</h1>
-            <span class="brand-subtitle">Login System</span>
+            <span class="brand-subtitle">Student Management System</span>
           </div>
-          <nav v-if="authStore.isAuthenticated" class="header-nav">
-            <router-link to="/dashboard" class="nav-item">Dashboard</router-link>
-            <router-link to="/profile" class="nav-item">Profile</router-link>
-            <button @click="handleLogout" class="logout-btn">Logout</button>
+          <nav class="header-nav">
+            <router-link to="/mahasiswa" class="nav-item">Mahasiswa</router-link>
+            <router-link v-if="authStore.isAuthenticated" to="/dashboard" class="nav-item">Dashboard</router-link>
+            <router-link v-if="authStore.isAuthenticated" to="/profile" class="nav-item">Profile</router-link>
+            <router-link v-if="!authStore.isAuthenticated" to="/login" class="nav-item">Login</router-link>
+            <button v-if="authStore.isAuthenticated" @click="handleLogout" class="logout-btn">Logout</button>
           </nav>
         </div>
       </header>
@@ -74,10 +77,13 @@ onUnmounted(() => {
 
       <footer class="app-footer">
         <div class="footer-content">
-          <p>&copy; 2024 SAKTI Mini Login System. All rights reserved.</p>
+          <p>&copy; 2024 SAKTI Mini Student Management System. All rights reserved.</p>
         </div>
       </footer>
     </div>
+
+    <!-- Notification Container -->
+    <NotificationContainer />
   </div>
 </template>
 

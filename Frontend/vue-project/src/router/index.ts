@@ -6,12 +6,13 @@ import { useAuthStore } from '@/stores/auth'
 import LoginForm from '@/components/LoginForm.vue'
 import RegisterForm from '@/components/RegisterForm.vue'
 import ProfilePage from '@/components/ProfilePage.vue'
+import MahasiswaList from '@/components/MahasiswaList.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Home',
-    redirect: '/login'
+    redirect: '/mahasiswa'
   },
   {
     path: '/login',
@@ -38,9 +39,14 @@ const routes: Array<RouteRecordRaw> = [
     meta: { requiresAuth: true }
   },
   {
+    path: '/mahasiswa',
+    name: 'Mahasiswa',
+    component: MahasiswaList
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
-    redirect: '/login'
+    redirect: '/mahasiswa'
   }
 ]
 
