@@ -3,7 +3,6 @@ import { mount } from '@vue/test-utils'
 import { createPinia, setActivePinia } from 'pinia'
 import { createRouter, createWebHistory } from 'vue-router'
 
-import App from '@/App.vue'
 import LoginForm from '@/components/LoginForm.vue'
 import ProfilePage from '@/components/ProfilePage.vue'
 import { useAuthStore } from '@/stores/auth'
@@ -84,6 +83,8 @@ describe('Authentication Flow Integration Tests', () => {
           id: 1,
           name: 'Test User',
           email: 'test@kampus.ac.id',
+          created_at: '2024-01-01T00:00:00.000000Z',
+          updated_at: '2024-01-01T00:00:00.000000Z',
         },
         token: 'mock-jwt-token-12345',
       },
@@ -354,7 +355,13 @@ describe('Authentication Flow Integration Tests', () => {
       success: true,
       message: 'Login successful',
       data: {
-        user: { id: 1, name: 'Test', email: 'test@test.com' },
+        user: { 
+          id: 1, 
+          name: 'Test', 
+          email: 'test@test.com',
+          created_at: '2024-01-01T00:00:00.000000Z',
+          updated_at: '2024-01-01T00:00:00.000000Z',
+        },
         token: 'test-token'
       }
     }
