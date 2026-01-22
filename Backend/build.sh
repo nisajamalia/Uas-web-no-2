@@ -1,22 +1,14 @@
 #!/bin/bash
 
+echo "Starting Laravel build for Vercel..."
+
 # Install PHP dependencies
-composer install --no-dev --optimize-autoloader
+composer install --no-dev --optimize-autoloader --no-interaction
 
-# Generate application key if not exists
-if [ ! -f .env ]; then
-    cp .env.example .env
-fi
+# Copy environment file
+cp .env.example .env
 
-# Generate app key
-php artisan key:generate --force
+# Generate application key
+php artisan key:generate --force --no-interaction
 
-# Cache configuration for better performance
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
-
-# Create storage link if needed
-php artisan storage:link
-
-echo "Build completed successfully!"
+echo "Laravel build completed successfully!"
